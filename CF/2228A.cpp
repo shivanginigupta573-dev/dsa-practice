@@ -4,7 +4,7 @@ void solve(int n, vector<int>& w) {
     sort(w.begin(), w.end());
     int oper=0;
     int l=0;
-    int r=w.size()-1;
+    int r=n-1;
     
     while (l<=r && w[l]==0) {
         oper++;
@@ -20,7 +20,8 @@ void solve(int n, vector<int>& w) {
             break; 
         }
     }
-    if (l<=r) {
+
+    if (l<=r) { 
         int remaining_elements=r-l+1;
         oper += remaining_elements/3;
     }
