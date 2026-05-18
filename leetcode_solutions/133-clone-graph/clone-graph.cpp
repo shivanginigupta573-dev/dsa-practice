@@ -33,6 +33,7 @@ unordered_map<Node*,Node*>mp;
        }
        Node* clone=new Node(node->val);
        mp[node]=clone;
+       //clone that particular node's neighbour also
        for(Node* nei:node->neighbors){
         clone->neighbors.push_back(cloneGraph(nei));
        }
