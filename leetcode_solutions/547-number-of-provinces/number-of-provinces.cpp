@@ -31,3 +31,16 @@ int find(vector<int>&arr,int x)
         
     }
 };
+/*
+[[1,1,0],[1,1,0],[0,0,1]]
+initially: provinces = 3,arr=[-1, -1, -1]
+i = 0, j = 1: isConnected[0][1] == 1
+  root0 = 0, root1 = 1
+  Since root0 != root1:
+    arr[1] = 0  = arr becomes [ -1, 0, -1 ]
+    provinces- provinces becomes 2
+i = 0, j = 2: isConnected[0][2] == 0 (Skip)
+i = 1, j = 2: isConnected[1][2] == 0 (Skip)
+
+Final Output: 2
+*/
