@@ -46,7 +46,11 @@ a//find root
 rootA=3;
 rootB=1;
 //no cycle perform union
-arr{-1,-1,-1,-1,3,-1,-1}
+arr{-1,3,-1,-1,1,-1}
+i=2;
+a=1 b=3;
+rootA=3 rootB=3;
+same root return 
 
 
 */
