@@ -24,8 +24,29 @@ int find(vector<int>&arr,int x)
             if(rootA == rootB) {
                 return {a, b};
             }
-            arr[rootA] = rootB; 
+            arr[rootB] = rootA; 
         }
       return {};
     }
 };
+/*
+Explantion of code
+[[1,4],[3,4],[1,3],[1,2],[4,5]]
+arr={-1,-1,-1,-1,-1,-1}
+i=0
+a=1
+b=4
+//find root
+rootA=1,rootB=4
+//no cycle so perform union
+arr={-1,-1,-1,-1,1,-1,-1}
+i=1
+a=3 b=4
+a//find root
+rootA=3;
+rootB=1;
+//no cycle perform union
+arr{-1,-1,-1,-1,3,-1,-1}
+
+
+*/
