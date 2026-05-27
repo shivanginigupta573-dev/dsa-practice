@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numberOfSpecialChars(string word) {
-        unordered_map<char, int> lastLower, firstUpper;
+        unordered_map<char,int>lastLower,firstUpper;
         for (int i=0;i<word.size();i++) {
             if (islower(word[i]))
                 lastLower[word[i]]=i; 
