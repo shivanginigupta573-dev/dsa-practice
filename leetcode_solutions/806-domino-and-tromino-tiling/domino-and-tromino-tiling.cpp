@@ -16,3 +16,8 @@ int MOD=1e9+7;
         return solve(n,memo);
     }
 };
+/*
+Grid Construction DP basically a recursion if we draw some  basic combinations 2 3  then recurrence relationn . 
+  F(N) = 2 * F(N-1) + F(N-3)
+ base cases F(1) = 1, F(2) = 2, F(3) = 5  Always apply modulo 1e9 + 7 at each addition step to prevent integer overflow
+*/
