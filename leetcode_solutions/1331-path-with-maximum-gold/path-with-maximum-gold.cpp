@@ -30,7 +30,9 @@ public:
         {
             for(int j=0;j<n;j++)
             {
+                if(grid[i][j]>0){
                 ans=max(ans,solver(grid,i,j,m,n,vis));
+                }
             }
         }
         return ans;
