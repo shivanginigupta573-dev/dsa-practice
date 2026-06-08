@@ -27,8 +27,11 @@ public:
           {
             for(int j=0;j<n;j++)
             {
+                if(board[i][j]==word[0]){
+
                 if(solver(board,word,i,j,vis,0,m,n))
                 return true;
+                }
             }
           }
       return false;
