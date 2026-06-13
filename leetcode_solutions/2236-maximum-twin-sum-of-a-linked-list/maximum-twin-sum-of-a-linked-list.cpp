@@ -11,23 +11,36 @@
 class Solution {
 public:
     int pairSum(ListNode* head) {
-        vector<int>nums;
-        ListNode * temp=head;
-        while(temp!=nullptr)
+        //previous one was a naive approach nd a sin
+        ListNode* slow=head;
+        ListNode* fast=head;
+        while(fast!=nullptr && fast->next!=nullptr)
         {
-            nums.push_back(temp->val);
-            temp=temp->next;
+            slow=slow->next;
+            fast=fast->next->next;
+            //slow will point to the mid point
         }
-        int n=nums.size();
-        int l=0,r=n-1;
-        int maxm=INT_MIN;
-        while(l<r)
-        {
-             int sum=nums[l]+nums[r];
-             maxm=max(sum,maxm);
-             l++;
-             r--;
+         //reverse the linkedlist inplace
+         ListNode* prev,*curr;
+         curr=slow;
+         //curr is the head of the second half that needs to be reversed
+         while(curr!=nullptr)
+         {
+            ListNode* next_node=curr->next;
+            curr->next=prev;              
+            prev=curr;                   
+            curr=next_node;
+         }
+        ListNode* p1=head;
+        ListNode* p2=prev;
+        int max_sum=0;
+        
+        while (p2!=nullptr) {
+            max_sum=max(max_sum,p1->val+p2->val);
+            p1=p1->next;
+            p2=p2->next;
         }
-        return maxm;
+        
+        return max_sum;
     }
 };
