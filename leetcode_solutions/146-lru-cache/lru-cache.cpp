@@ -27,7 +27,7 @@ public:
         afterNode->prev=prevNode;
     }
 
-    void insertToFront(Node* node)
+    void insertNode(Node* node)
      { //insert after head 
         Node* headAfter=head->next;
         head->next=node;
@@ -42,17 +42,19 @@ public:
 
         Node* node=mp[key];
         deleteNode(node);
-        insertToFront(node);
+        insertNode(node);
         return node->val;
     }
 
-    void put(int key, int value) {
+    void put(int key, int value) 
+    {
+        //if key iss already prsent just update the value
         if(mp.find(key)!= mp.end()) 
         { 
             Node* node= mp[key];
             node->val= value;
             deleteNode(node);
-            insertToFront(node);
+            insertNode(node);
         }
         else 
         { 
@@ -65,7 +67,7 @@ public:
             }
             Node* node=new Node(key, value); 
             mp[key]=node;
-            insertToFront(node);
+            insertNode(node);
         }
     }
 };
