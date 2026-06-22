@@ -11,17 +11,30 @@
  */
 class Solution {
 public:
-TreeNode* prev=nullptr;
+    TreeNode* dfs(TreeNode* node)
+    {
+        if(node==nullptr)
+         return node;
+        TreeNode* leftTail=dfs(node->left);
+        TreeNode* rightTail=dfs(node->right);
+        if(leftTail)
+        {
+            leftTail->right=node->right; //3->4
+            node->right=node->left; //node->right=null node->left =>3->4 2-3-4
+            node->left=nullptr;
+        }
+        if (rightTail)
+        {
+            return rightTail;
+        }
+        if(leftTail)
+         return leftTail;
+        return node;
+
+    }
     void flatten(TreeNode* root) {
-        //dfs approach
-        if(root==nullptr)
-        return ;
-        flatten(root->right);
-        flatten(root->left);
-        root->right = prev;
-        root->left = nullptr;
-        prev = root;
-        
+         dfs(root);
+
         
     }
 };

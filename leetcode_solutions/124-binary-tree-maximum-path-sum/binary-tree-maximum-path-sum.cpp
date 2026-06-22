@@ -13,18 +13,22 @@ class Solution {
 public:
    int solve(TreeNode* node,int &res)
    {
-        if(node==nullptr)
-          return 0;
-        int l=solve(node->left,res);
-        int r=solve(node->right,res);
-        int temp=max(l,r)+1;
-        int ans=l+r;//include root nd not including root
-        res=max(res,ans);
-        return temp;
+      //base case
+      if(node==nullptr)
+      {
+        return 0;
+      }
+      int l=solve(node->left,res);
+      int r=solve(node->right,res);
+      int temp=max(max(l,r)+node->val,node->val);
+      int ans=max(temp,l+r+node->val);
+      res=max(ans,res);
+      return temp;
    }
-    int diameterOfBinaryTree(TreeNode* root) {
-        int res=0;
+    int maxPathSum(TreeNode* root) {
+        int res=INT_MIN;
         solve(root,res);
         return res;
+        
     }
 };
