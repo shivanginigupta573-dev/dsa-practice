@@ -1,21 +1,21 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        unordered_map<int,int>mp;
-        for(int i:nums)
+        //floyds algorithm linked list problem
+        int slow=nums[0];
+        int fast=nums[0];
+        do
         {
-            mp[i]++;
-        }
-        int ans=0;
-        for(auto & it:mp)
+            slow=nums[slow];//1 jump
+            fast=nums[nums[fast]];//2 jump
+        }while(slow!=fast);//we found a cycle
+        slow=nums[0];
+        while(slow!=fast)
         {
-            if(it.second>1)
-            {
-                ans=it.first;
-                break;
-            }
-
+            slow=nums[slow];
+            fast=nums[fast];
         }
-        return ans;
+        return slow;
+        
     }
 };
