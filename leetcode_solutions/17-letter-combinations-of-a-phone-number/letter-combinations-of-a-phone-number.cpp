@@ -1,28 +1,26 @@
 class Solution {
 public:
-    vector<string> letterCombinations(string digits) {
-        // '' '' for 0 and 1 cuz nothing maps to it
-
-      string combos[] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        vector<string> ans;
-        string s = ""; 
-        helper(0, digits, s, ans, combos);
-        return ans; 
-    }
-
-
-    void helper(int idx, string digits,string s,vector<string>&ans,string combos[])   
+    void solve(int idx,string digits,vector<string>&ans,string combos[],string s)
     {
-        if(idx==digits.size())//base case
+        int n=digits.size();
+        if(idx==n)
         {
             ans.push_back(s);
             return;
         }
-        int digit=digits[idx]-'0';
-        for(int i=0;i<combos[digit].size();i++)
+        int d=digits[idx]-'0';
+        for(int i=0;i<combos[d].size();i++)
         {
-            helper(idx+1,digits,s+combos[digit][i],ans,combos);
+           solve(idx+1,digits,ans,combos,s+combos[d][i]);
         }
-    }  
-    
+
+    }
+    vector<string> letterCombinations(string digits) {
+        vector<string>ans;
+        string combos[]={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};//empty for  zero and 1
+        string s="";
+        solve(0,digits,ans,combos,s);
+        return ans;
+        
+    }
 };
