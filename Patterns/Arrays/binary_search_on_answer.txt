@@ -1,0 +1,32 @@
+✔ Minimize the maximum
+✔ Maximize the minimum
+✔ Smallest feasible answer
+✔ Largest feasible answer
+✔ Minimum speed
+✔ Minimum capacity
+✔ Maximum distance
+✔ Minimum days
+✔ Minimum cost
+Any of these terms appear then ask yourself am I searching on the answer itself\
+
+then its binary search on answer 
+after that define the search space
+low=minimum possible answer
+high=maximum possible answer
+//use the template for minimising
+while(low<=high)
+{
+    int mid=low+(high-low)/2;
+    if(check(mid))
+    {
+        //mid can be a answer
+        check for others
+        high=mid-1;
+    }
+    else
+    {
+        beg=mid+1;
+    }
+    return ans;
+}
+//for maximum flip the conditions
