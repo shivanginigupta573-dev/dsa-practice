@@ -1,44 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-void solve(int n, vector<int>& a)
-{
-   int i, score = 0, j, f;
-   vector<bool> done(n, false); 
-
-   for (int turn = 0; turn < n; turn++) { // max n turns
-      int best_i = -1, best_val = -1;
-
-     
-      for (i = 0; i < n; i++) {
-         if (!done[i] && a[i] > best_val) {
-            best_val = a[i];
-            best_i = i;
-         }
-      }
-      if (best_i == -1) break; // all done
-
-      int val = a[best_i];
-      score += val;
-
-      
-      for (i = 0; i < n; i++) {
-         if (!done[i] && (a[i] == val || a[i] == val + 1 || a[i] == val - 1)) {
-            done[i] = true;
-         }
-      }
-   }
-   cout << score << endl;
-}
+using ll=long long;
 
 int main()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for(int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    solve(n, a);
+   int n;
+   cin>>n;
+   int maxmA=0;
+   vector<int>a(n);
+   for(int i=0;i<n;i++)//similar to robbers problem of leetcode
+   {
+      cin>>a[i];
+      maxmA=max(maxmA,a[i]);
+   }
+   vector<ll>cnt(maxmA+1,0);
+   vector<ll>dp(maxmA+1,0);
+   for(int x:a)
+   {
+      cnt[x]++;
+   }
+   dp[1]=cnt[1]*1LL;
+   for(int i=2;i<=maxmA;i++)
+   {
+      dp[i]=max(dp[i-1],dp[i-2]+i*cnt[i]);
+   }
+   cout<<dp[maxmA]<<endl;
+
 }
