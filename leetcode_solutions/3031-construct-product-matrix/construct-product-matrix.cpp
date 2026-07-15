@@ -29,10 +29,12 @@ public:
         vector<vector<int>> ans(n, vector<int>(m));
 
         k = 0;
-        for (int i = 0; i < sz; i++) {
-            int val = (1LL * prefix[i] * suffix[i]) % mod;
-            ans[k / m][k % m] = val;
-            k++;
+         for (int i=0;i<n;i++) {
+            for (int j=0;j<m;j++) {
+                int val=(1LL * prefix[k]*suffix[k])%mod;
+                ans[i][j]=val;
+                k++;
+            }
         }
 
         return ans;
