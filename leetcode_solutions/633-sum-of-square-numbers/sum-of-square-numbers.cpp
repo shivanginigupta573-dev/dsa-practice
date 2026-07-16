@@ -4,7 +4,7 @@ public:
        
         long long a,b;
         a=0;
-        b=(sqrt(c));
+        b=floor(sqrt(c));
         while(a<=b)
         {
          long long sum=a*a+b*b;
