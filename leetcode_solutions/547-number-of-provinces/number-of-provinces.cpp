@@ -7,7 +7,7 @@ int find(vector<int>&arr,int x)
         return x;//x is the root
     }
   //otherwise recurse to find the root
-  return find(arr,arr[x]);
+  return arr[x]= find(arr,arr[x]);
 }
     int findCircleNum(vector<vector<int>>& isConnected) {
         int n=isConnected.size();
